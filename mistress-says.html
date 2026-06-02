@@ -142,6 +142,18 @@
       text-decoration: none;
       margin-right: 1rem;
     }
+
+    .home-hint {
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+      padding: 0.8rem 2rem 0;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-style: italic;
+      letter-spacing: 0.04em;
+      opacity: 0.55;
+    }
   </style>
 </head>
 <body>
@@ -160,6 +172,8 @@
 
     <button class="btn" onclick="showCommand()">Receive your instruction</button>
   </div>
+
+  <div class="home-hint" id="homeHint"></div>
 
   <footer>
     <a href="index.html">← Return</a>
@@ -194,6 +208,21 @@
       "Mistress says: your willingness is the gift I choose to accept.",
       "Mistress says: this has always made more sense to you than anything else."
     ];
+
+    // Show home screen hint based on device
+    (function() {
+      const hint = document.getElementById('homeHint');
+      const ua = navigator.userAgent;
+      const isIOS = /iphone|ipad|ipod/i.test(ua);
+      const isAndroid = /android/i.test(ua);
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+      if (isStandalone) return;
+      if (isIOS) {
+        hint.textContent = 'Save to your home screen — tap the share icon, then Add to Home Screen.';
+      } else if (isAndroid) {
+        hint.textContent = 'Save to your home screen — tap the menu, then Add to Home Screen.';
+      }
+    })();
 
     let last = -1;
 
