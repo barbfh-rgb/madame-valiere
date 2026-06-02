@@ -152,7 +152,7 @@
       color: var(--muted);
       font-style: italic;
       letter-spacing: 0.04em;
-      opacity: 0.8;
+      opacity: 1;
     }
   </style>
 </head>
@@ -218,7 +218,7 @@
       const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
       if (isStandalone) return;
       if (isIOS) {
-        hint.textContent = 'Save to your home screen — tap the share icon, then Add to Home Screen.';
+        hint.textContent = 'Save to your home screen — open in Safari, tap the share icon, then Add to Home Screen.';
       } else if (isAndroid) {
         hint.textContent = 'Save to your home screen — tap the menu, then Add to Home Screen.';
       }
