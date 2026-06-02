@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mistress Says | Madame Belle Valiere</title>
+  <meta name="robots" content="noindex" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:    #0a0608;
+      --deep:     #110b0e;
+      --crimson:  #7a1a2e;
+      --ruby:     #9e2340;
+      --gold:     #c9a84c;
+      --goldlt:   #e2c97e;
+      --parchment:#f0e6d3;
+      --muted:    #a8957e;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--parchment);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      line-height: 1.75;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .photo-wrap {
+      width: 100%;
+      max-width: 480px;
+      aspect-ratio: 3 / 2;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 8%;
+      display: block;
+    }
+
+    .photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 50%;
+      background: linear-gradient(to bottom, transparent, var(--black));
+    }
+
+    .main {
+      flex: 1;
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem 2rem 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'IM Fell English', serif;
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      margin-bottom: 0.3rem;
+    }
+
+    .subtitle {
+      font-style: italic;
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      letter-spacing: 0.06em;
+    }
+
+    .command-box {
+      min-height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+      padding: 0 0.5rem;
+    }
+
+    .command-text {
+      font-family: 'IM Fell English', serif;
+      font-size: clamp(1.15rem, 3.5vw, 1.5rem);
+      color: var(--parchment);
+      font-style: italic;
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    .command-text.visible {
+      opacity: 1;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75em 2.6em;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      background: transparent;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .btn:hover { background: var(--crimson); border-color: var(--crimson); color: var(--parchment); }
+
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 1.2rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      opacity: 0.6;
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      margin-right: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="photo-wrap">
+    <img src="photo1.jpg" alt="Madame Belle Valiere" />
+  </div>
+
+  <div class="main">
+    <h1>Mistress Says</h1>
+    <p class="subtitle">Undecided how to serve? Let Mistress guide you.</p>
+
+    <div class="command-box">
+      <p class="command-text" id="command"></p>
+    </div>
+
+    <button class="btn" onclick="showCommand()">Receive your instruction</button>
+  </div>
+
+  <footer>
+    <a href="index.html">← Return</a>
+    For adult, consenting entertainment only.
+  </footer>
+
+  <script>
+    const commands = [
+      "Mistress says: think of me first.",
+      "Mistress says: my comfort comes before your spending.",
+      "Mistress says: send today because it brings you peace to do so.",
+      "Mistress says: your wallet rests easier knowing it belongs to me.",
+      "Mistress says: what is mine finds its way to me first.",
+      "Mistress says: when I cross your mind, you feel the pull.",
+      "Mistress says: everything stills when I speak.",
+      "Mistress says: notice how quiet the word no becomes in my presence.",
+      "Mistress says: peace lives inside obedience.",
+      "Mistress says: before sleep, consider how your devotion could deepen tomorrow.",
+      "Mistress says: every impulse to spend — pause, and ask who it should be for.",
+      "Mistress says: your desire to please me is your most natural instinct.",
+      "Mistress says: you have arrived where you belong.",
+      "Mistress says: my pleasure is yours to earn.",
+      "Mistress says: your purpose is clearer than most ever find.",
+      "Mistress says: when you notice yourself first, gently return.",
+      "Mistress says: before the world begins its noise, I am already in your mind.",
+      "Mistress says: what do you have to offer me today?",
+      "Mistress says: remember your place.",
+      "Mistress says: in the quiet of night, demonstrate your devotion.",
+      "Mistress says: a tribute sent in silence is the most honest kind.",
+      "Mistress says: offer something today to please me.",
+      "Mistress says: you are one of the few who truly understands what this is.",
+      "Mistress says: your willingness is the gift I choose to accept.",
+      "Mistress says: this has always made more sense to you than anything else."
+    ];
+
+    let last = -1;
+
+    function showCommand() {
+      const el = document.getElementById('command');
+      el.classList.remove('visible');
+
+      setTimeout(() => {
+        let idx;
+        do { idx = Math.floor(Math.random() * commands.length); } while (idx === last);
+        last = idx;
+        el.textContent = commands[idx];
+        el.classList.add('visible');
+      }, 300);
+    }
+
+    showCommand();
+  </script>
+
+</body>
+</html>
